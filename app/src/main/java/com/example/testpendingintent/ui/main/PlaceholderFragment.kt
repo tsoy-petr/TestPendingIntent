@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.example.testpendingintent.SyncWork
 import com.example.testpendingintent.databinding.FragmentMainBinding
+import com.example.testpendingintent.models.Status
 import kotlinx.coroutines.flow.collect
 import timber.log.Timber
 
@@ -51,9 +52,20 @@ class PlaceholderFragment : Fragment() {
 //            textView.text = it
 //        })
         lifecycleScope.launchWhenCreated {
-            SyncWork.state.collect {state->
-                state.updateIfNeed()?.let {status->
+            SyncWork.state.collect { state ->
+                state.updateIfNeed()?.let { status ->
                     Timber.i(status.toString())
+                    when (status) {
+                        is Status.Initial, is Status.Error, is Status.End -> {
+                            binding.shimmerViewContainer.hideShimmer()
+                            binding.shimmerViewContainer.gone()
+                        }
+                        else -> {
+                            binding.shimmerViewContainer.visible()
+                            binding.shimmerViewContainer.showShimmer(true)
+                        }
+
+                    }
                 }
             }
         }
@@ -88,4 +100,16 @@ class PlaceholderFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+}
+
+fun View.visible() {
+    this.visibility = View.VISIBLE
+}
+
+fun View.invisible() {
+    this.visibility = View.INVISIBLE
+}
+
+fun View.gone() {
+    this.visibility = View.GONE
 }
