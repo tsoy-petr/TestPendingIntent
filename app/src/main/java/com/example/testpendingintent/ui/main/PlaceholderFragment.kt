@@ -57,12 +57,12 @@ class PlaceholderFragment : Fragment() {
                     Timber.i(status.toString())
                     when (status) {
                         is Status.Initial, is Status.Error, is Status.End -> {
-                            binding.shimmerViewContainer.hideShimmer()
-                            binding.shimmerViewContainer.gone()
+//                            binding.shimmerViewContainer.hideShimmer()
+//                            binding.shimmerViewContainer.gone()
                         }
                         else -> {
-                            binding.shimmerViewContainer.visible()
-                            binding.shimmerViewContainer.showShimmer(true)
+//                            binding.shimmerViewContainer.visible()
+//                            binding.shimmerViewContainer.showShimmer(true)
                         }
 
                     }

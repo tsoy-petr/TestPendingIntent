@@ -21,6 +21,18 @@
         tools:layout_constraintLeft_creator="1"
         tools:layout_constraintTop_creator="1" />
 
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animationView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/section_label"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/sync_work"
+        app:lottie_scale="0.3"/>
+
     <com.facebook.shimmer.ShimmerFrameLayout
         android:id="@+id/shimmer_view_container"
         android:layout_width="0dp"
@@ -30,7 +42,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/section_label"
+        app:layout_constraintTop_toBottomOf="@+id/animationView"
         shimmer:duration="800"
         shimmer:shimmer_auto_start="false"
         android:visibility="gone">
